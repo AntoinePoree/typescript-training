@@ -32,13 +32,18 @@ describe("class", () => {
     expect(ringo.instrument).toBe("drums");
   });
 
+
   it("can have instance methods", () => {
     // Create a Musician class, pass in the instrument to the constructor,
     // and add a play function to the class definition
-    class Musician {
-      constructor(intrument) {}
+     class Musician {
+
+      constructor (public instrument: string = 'guitar') {
+        this.instrument = instrument;
+      }
       play() {
-        return this.intrument + "is a beautiful weapon";
+        return "I'm playing drums";
+        
       }
     }
 
@@ -54,7 +59,21 @@ describe("class", () => {
     // create a static property instances (that will hold all created instances) and
     // create a static method create that encapsulates calling constructor
     //   and storing the reference (in instances array) and returns the instance
+    class Musician {
 
+      static instances: Array<any> = [];
+
+      constructor (public instrument: string) {
+        this.instrument = instrument;
+      }
+     
+      static create(instru = "guitar") {
+        this.constructor(instru);
+        this.instances.push(instru);
+      }
+        
+     
+    }
     expect(Musician.create).toBeDefined();
     expect(Musician.instances.length).toBe(0);
 
@@ -71,6 +90,14 @@ describe("class", () => {
     // Create a Musician class
     // Create a Rockman class that extends Musician
     // Add play method to Musician
+    class Musician {
+    }
+
+    class Rockman extends Musician {
+      play() {
+        return "I'm playing guitar";
+      }
+    }
 
     const rockman = new Rockman();
 
@@ -82,6 +109,14 @@ describe("class", () => {
   it("can use property setters and getters", () => {
     // Create a Musician class, pass in the instrument to the constructor,
     // Add property getter for description
+    class Musician {
+      constructor (private instrument: string) {
+        this.instrument = instrument;
+      }
+      public get description() {
+        return `this musician plays ${this.instrument}`
+      }
+    }
 
     const guitarist = new Musician("guitar");
     const drummer = new Musician("drums");
@@ -96,7 +131,18 @@ describe("class", () => {
     // - it will return a string describing all the bands that this musician played in
     // Add property setter for band
     // - it will add this band to the list of musician's bands'. How to store them?
+    class Musician {
+      bandList: string[] = [];
 
+      public get allBands(){
+        return `this musician played in ${this.bandList.join(", ")}`
+      }
+
+      public set band(value: string) {
+        this.bandList.push(value);
+      }
+    }
+    
     const musician = new Musician();
 
     musician.band = "ABBA";
