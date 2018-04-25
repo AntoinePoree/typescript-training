@@ -5,10 +5,10 @@ describe('default parameters', () => {
       return name
     }
 
-    expect(shoot('Chris')).toBe(/* YOUR ANSWER */)
-    expect(shoot(undefined)).toBe(/* YOUR ANSWER */)
-    expect(shoot(null)).toBe(/* YOUR ANSWER */)
-    expect(shoot()).toBe(/* YOUR ANSWER */)
+    expect(shoot('Chris')).toBe('Chris'/* YOUR ANSWER */)
+    expect(shoot(undefined)).toBe('Steve'/* YOUR ANSWER */)
+    expect(shoot(null)).toBe(null/* YOUR ANSWER */)
+    expect(shoot()).toBe('Steve'/* YOUR ANSWER */)
   })
 
   it('are not included in arguments', () => {
@@ -16,9 +16,9 @@ describe('default parameters', () => {
       return arguments.length
     }
 
-    expect(shoot('Chris')).toBe(/* YOUR ANSWER */)
-    expect(shoot(null)).toBe(/* YOUR ANSWER */)
-    expect(shoot()).toBe(/* YOUR ANSWER */)
+    expect(shoot('Chris')).toBe(1/* YOUR ANSWER */)
+    expect(shoot(null)).toBe(1/* YOUR ANSWER */)
+    expect(shoot()).toBe(0/* YOUR ANSWER */)
   })
 
   it('can trigger a function call', () => {
@@ -33,17 +33,17 @@ describe('default parameters', () => {
       return 'Steve'
     }
 
-    expect(triggerCount).toBe(/* YOUR ANSWER */)
-    expect(shoot('Chris')).toBe(/* YOUR ANSWER */)
-    expect(shoot()).toBe(/* YOUR ANSWER */)
-    expect(shoot(undefined)).toBe(/* YOUR ANSWER */)
-    expect(triggerCount).toBe(/* YOUR ANSWER */)
+    expect(triggerCount).toBe(0/* YOUR ANSWER */)
+    expect(shoot('Chris')).toBe('Chris'/* YOUR ANSWER */)
+    expect(shoot()).toBe('Steve'/* YOUR ANSWER */)
+    expect(shoot(undefined)).toBe('Steve'/* YOUR ANSWER */)
+    expect(triggerCount).toBe(2/* YOUR ANSWER */)
   })
 
   it('can default all arguments, optionally', () => {
     // Modify the method signature of `myFunction` to allow for all args to be optional
 
-    function myFunction({name, age, favoriteBand}) {
+    function myFunction({ name = 'love', age = 20, favoriteBand = 'BANGBANG' } = {}) {
       expect(name).toBeDefined()
       expect(age).toBeDefined()
       expect(favoriteBand).toBeDefined()
