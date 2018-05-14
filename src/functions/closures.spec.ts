@@ -5,7 +5,12 @@ describe('Closures', function(){
 		// each `incrementer` call returns a function which, when called, increments the counter with +1 and returns the new value
 		// the initial value of the counter is 0
 		// the value itself is not directly accessible from the outside
-
+		var incrementer = (() => {
+			var counter = 0; return function () {
+				counter++
+				return counter
+			}
+		});
 		// define incrementer function here
 		// try to define function signature
 
@@ -27,7 +32,14 @@ describe('Closures', function(){
 		// `dec` does the same job with -1
 		// the initial value of the counter is 0, same as in previous exercise
 		// the value itself is not directly accessible from the outside
+		var counter = () => {
+			var count = 0;
+			return {
+				inc: () => count = count + 1,
+				dec: () => count = count - 1
+			}
 
+		};
 		// define counter function here
 		// try to define function signature
 
@@ -51,6 +63,15 @@ describe('Closures', function(){
 
 		// define finanseStorage function here
 		// try to define function signature
+		let finanseStorage =() => {
+			let store = 0;
+			return {
+				getBalance: () => Math.round(store * 100) / 100,
+				saveOutcome: (n) => store -= n,
+				saveIncome: (x) => store += x
+
+			}
+		}
 
 		var f1 = finanseStorage();
 		expect(f1.getBalance()).toEqual(0);
