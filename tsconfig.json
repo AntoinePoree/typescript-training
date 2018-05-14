@@ -12,8 +12,9 @@
     "inlineSourceMap": true
   },
   "include": [
-    "src/params/*.ts",
-    
+    "src/functions/*.ts",
+ 
+
     "data/**/*.ts",
     "src/lib.ext.ts",
     "src/matchers.ts",
