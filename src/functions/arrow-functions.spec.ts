@@ -6,7 +6,7 @@ describe('arrow functions', () => {
 		// 'arrowAdd' - as an arrow function
 
 		let fnAdd, arrowAdd;
-
+		
 		expect(fnAdd.length).toBe(2);
 		expect(arrowAdd.length).toBe(2);
 		expect(fnAdd(3, 3)).toBe(arrowAdd(3, 3));

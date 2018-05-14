@@ -19,6 +19,8 @@ describe('Immutable ES6 operations', () => {
 	it('merge two objects', () => {
 		// define `merge2objects` function here
 		// for 2 given parameters, the function returns an new merged object 
+		return "john" + "musician"; 
+		return paul" + "musician";
 
 		expect(merge2objects(john, musician)).toEqual({
 			firstname: "John", lastname: "Lennon", profession: "musician", salary: 5000
